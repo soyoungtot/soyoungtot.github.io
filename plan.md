@@ -15,8 +15,8 @@ This is the source of truth for moving the working local website to <https://soy
 
 ## Current Status
 
-- Current checkpoint: Checkpoint 7 - Inventory Namecheap DNS
-- Overall status: Domain verified; custom domain awaiting Namecheap web-record changes
+- Current checkpoint: Checkpoint 8 - DNS propagation and GitHub check
+- Overall status: Namecheap points to GitHub; HTTPS certificate pending
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -195,7 +195,7 @@ Completion gate:
 
 ## Checkpoint 4 - First GitHub Pages Deployment
 
-Status: In progress
+Status: Complete
 
 1. In the GitHub repository, open **Settings**.
 2. In the left sidebar, open **Pages**.
@@ -282,22 +282,22 @@ This checkpoint prevents accidental email or service disruption.
 1. In Namecheap, open **Domain List** → `soyounghan.com` → **Manage**.
 2. Record the **Nameservers** selection. `[x]` Namecheap BasicDNS (`dns1` and `dns2.registrar-servers.com`)
 3. Open **Advanced DNS**.
-4. Capture the entire **Host Records** table before editing.
-5. Record all existing entries for hosts `@`, `www`, and `*`.
-6. Note any **URL Redirect**, **A**, **AAAA**, **ALIAS**, **ANAME**, or **CNAME** records for `@` or `www`.
-7. Preserve every MX record and email-related TXT record.
-8. Preserve the GitHub domain-verification TXT record.
-9. Do not create a wildcard `*` record; report an existing wildcard before continuing.
+4. Capture the **Host Records** relevant to deployment before editing. `[x]`
+5. Record existing entries for hosts `@`, `www`, and `*`. `[x]` Root redirect and `www` parking identified; no wildcard response.
+6. Note conflicting web records for `@` and `www`. `[x]`
+7. Preserve every MX record and email-related TXT record. `[x]`
+8. Preserve the GitHub domain-verification TXT record. `[x]`
+9. Do not create a wildcard `*` record. `[x]`
 
 If Host Records cannot be edited, the domain may use custom nameservers and DNS may be managed outside Namecheap. Stop and identify that DNS provider before proceeding.
 
 Completion gate:
 
-- [ ] Existing DNS is backed up and any conflicting `@`/`www` web records are identified.
+- [x] Existing DNS is backed up and conflicting `@`/`www` web records were identified.
 
 ## Checkpoint 8 - Point Namecheap to GitHub Pages
 
-Status: Not started
+Status: In progress
 
 Only perform this after Checkpoints 4 through 7 pass.
 
@@ -332,9 +332,9 @@ Important rules:
 
 Technical verification:
 
-- [ ] Public DNS returns all four GitHub Pages A records for `soyounghan.com`.
-- [ ] Public DNS returns `<GITHUB-USERNAME>.github.io` as the CNAME for `www.soyounghan.com`.
-- [ ] Existing email records still match the pre-change backup.
+- [x] Public DNS returns all four GitHub Pages A records for `soyounghan.com` through Google and Cloudflare resolvers.
+- [x] Public DNS returns `soyoungtot.github.io` as the CNAME for `www.soyounghan.com`.
+- [x] Existing email-forwarding MX and SPF records still match the pre-change inventory.
 - [ ] GitHub repository **Settings** → **Pages** reports a successful DNS check.
 
 Namecheap says records often begin updating within approximately 30 minutes; complete propagation can take up to 24 hours.
@@ -451,7 +451,7 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Canonical URL embedded in first paper | Production acceptance | Complete | Confirmed present in the supplied PDF |
 | Canonical URLs inside CV | Production acceptance | Open | Current CV uses `http://www.soyounghan.com`; update to `https://soyounghan.com` before final export |
 | DNS provider/nameservers | Checkpoint 7 | Complete | Namecheap BasicDNS confirmed publicly |
-| Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | In progress | Public DNS inventoried; confirm the full Namecheap Host Records table before editing |
+| Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Complete | Web conflicts replaced; email, SPF, and verification TXT preserved; no wildcard found |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
 | GitHub push authentication | Checkpoint 3 | Complete | Dedicated SSH key added to the `soyoungtot` account and verified |
@@ -472,7 +472,7 @@ Fill this in as we proceed. None of these values should be secret.
 | GitHub domain-verification TXT host | `_github-pages-challenge-soyoungtot` |
 | GitHub domain-verification TXT value | `0702e4cf65b44ecb34816d5fbfb424` |
 | Namecheap nameserver mode | BasicDNS: `dns1.registrar-servers.com`, `dns2.registrar-servers.com` |
-| DNS backup date | Pending |
+| DNS backup date | 2026-09-28 |
 | HTTPS enabled date | Pending |
 | Launch date | Pending |
 | Deployed commit | `dc6806c` verified at the temporary Pages URL |
@@ -507,6 +507,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Completed deployment Checkpoint 4. | Astro workflow build and deploy succeeded; temporary URL and all intended routes verified. |
 | 2026-09-28 | Completed deployment Checkpoints 5 and 6. | Domain ownership verified; repository configured for `soyounghan.com` before web DNS changes. |
 | 2026-09-28 | Inventoried public DNS. | Existing root redirect, `www` parking, email-forwarding MX/SPF, and verification TXT records identified. |
+| 2026-09-28 | Updated Namecheap web records. | Apex and `www` resolve correctly through public DNS; GitHub edge serves the site and redirects `www` to apex. |
 
 ## Plan Maintenance Rules
 
