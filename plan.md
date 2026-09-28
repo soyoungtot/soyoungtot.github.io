@@ -15,8 +15,8 @@ This is the source of truth for moving the working local website to <https://soy
 
 ## Current Status
 
-- Current checkpoint: Checkpoint 3 - Create the GitHub repository
-- Overall status: Local release build ready for GitHub
+- Current checkpoint: Checkpoint 4 - First GitHub Pages deployment
+- Overall status: Source published; Astro deployment verification in progress
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -134,7 +134,7 @@ Completion gate:
 
 ## Checkpoint 2 - Production Readiness
 
-Status: In progress
+Status: Complete
 
 The technical assistant completes these tasks locally.
 
@@ -186,20 +186,20 @@ Then the technical assistant will:
 - [x] Review every file that will be committed.
 - [x] Create the reviewed initial commit.
 - [x] Connect the local repository to the GitHub repository.
-- [!] Push the `main` branch. Blocked until GitHub sign-in is completed securely in VS Code.
-- [ ] Confirm the source files and GitHub Actions workflow appear on GitHub.
+- [x] Push the `main` branch using the dedicated GitHub SSH key.
+- [x] Confirm the source files and GitHub Actions workflow appear on GitHub.
 
 Completion gate:
 
-- [ ] The complete reviewed source is on the `main` branch of the correct GitHub repository.
+- [x] The complete reviewed source is on the `main` branch of the correct GitHub repository.
 
 ## Checkpoint 4 - First GitHub Pages Deployment
 
-Status: Not started
+Status: In progress
 
 1. In the GitHub repository, open **Settings**.
 2. In the left sidebar, open **Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**. `[x]`
 4. Open the repository's **Actions** tab.
 5. Watch the `Deploy to GitHub Pages` workflow.
 6. If approval is requested, approve only the workflow from this repository.
@@ -454,7 +454,7 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Open | Must inventory before editing DNS |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
-| GitHub push authentication | Checkpoint 3 | Blocked | Sign in through VS Code; do not share tokens or authentication codes in chat |
+| GitHub push authentication | Checkpoint 3 | Complete | Dedicated SSH key added to the `soyoungtot` account and verified |
 
 ## Deployment Record
 
@@ -466,7 +466,7 @@ Fill this in as we proceed. None of these values should be secret.
 | Repository owner | `soyoungtot` personal account |
 | Repository name | `soyoungtot.github.io` |
 | Repository URL | `https://github.com/soyoungtot/soyoungtot.github.io` |
-| Temporary Pages URL | Pending |
+| Temporary Pages URL | `https://soyoungtot.github.io` |
 | Custom domain | `soyounghan.com` |
 | Canonical URL | `https://soyounghan.com` |
 | GitHub domain-verification TXT host | Pending |
@@ -503,6 +503,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Completed deployment Checkpoint 2. | Clean release build, metadata, discovery files, custom domain, and GitHub Actions workflow are ready. |
 | 2026-09-28 | Created and connected the GitHub repository. | Public empty repository verified at `soyoungtot/soyoungtot.github.io`; reviewed files staged locally. |
 | 2026-09-28 | Created the initial local commit. | Commit `233a0cf` is ready; first push is waiting for secure GitHub authentication. |
+| 2026-09-28 | Completed deployment Checkpoint 3. | Source pushed to `main`; Pages source changed from branch deployment to GitHub Actions. |
 
 ## Plan Maintenance Rules
 
