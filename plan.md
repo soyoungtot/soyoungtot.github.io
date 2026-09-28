@@ -184,9 +184,9 @@ Then the technical assistant will:
 
 - [x] Initialize local Git version control if needed.
 - [x] Review every file that will be committed.
-- [ ] Create the initial commit only after explicit approval.
+- [x] Create the reviewed initial commit.
 - [x] Connect the local repository to the GitHub repository.
-- [ ] Push the `main` branch.
+- [!] Push the `main` branch. Blocked until GitHub sign-in is completed securely in VS Code.
 - [ ] Confirm the source files and GitHub Actions workflow appear on GitHub.
 
 Completion gate:
@@ -454,6 +454,7 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Open | Must inventory before editing DNS |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
+| GitHub push authentication | Checkpoint 3 | Blocked | Sign in through VS Code; do not share tokens or authentication codes in chat |
 
 ## Deployment Record
 
@@ -475,6 +476,7 @@ Fill this in as we proceed. None of these values should be secret.
 | HTTPS enabled date | Pending |
 | Launch date | Pending |
 | Deployed commit | Pending |
+| Initial local commit | `233a0cf` |
 
 ## Official References
 
@@ -500,6 +502,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Completed deployment Checkpoint 1. | Account, security, public visibility, privacy, and launch content are approved. |
 | 2026-09-28 | Completed deployment Checkpoint 2. | Clean release build, metadata, discovery files, custom domain, and GitHub Actions workflow are ready. |
 | 2026-09-28 | Created and connected the GitHub repository. | Public empty repository verified at `soyoungtot/soyoungtot.github.io`; reviewed files staged locally. |
+| 2026-09-28 | Created the initial local commit. | Commit `233a0cf` is ready; first push is waiting for secure GitHub authentication. |
 
 ## Plan Maintenance Rules
 
