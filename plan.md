@@ -15,8 +15,8 @@ This is the source of truth for moving the working local website to <https://soy
 
 ## Current Status
 
-- Current checkpoint: Checkpoint 4 - First GitHub Pages deployment
-- Overall status: Source published; Astro deployment verification in progress
+- Current checkpoint: Checkpoint 5 - Verify domain ownership in GitHub
+- Overall status: Temporary GitHub Pages deployment verified
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -167,7 +167,7 @@ Completion gate:
 
 ## Checkpoint 3 - Create the GitHub Repository
 
-Status: In progress
+Status: Complete
 
 Soyoung completes the account action while the technical assistant guides and verifies.
 
@@ -206,24 +206,24 @@ Status: In progress
 
 Technical verification:
 
-- [ ] The build job succeeds.
-- [ ] The deploy job succeeds.
-- [ ] Record the temporary GitHub Pages URL.
-- [ ] Open the temporary URL in a private/incognito window.
-- [ ] Confirm the home page, image, fonts, CV, and Job Market Paper load.
-- [ ] Confirm papers two and three remain non-clickable.
-- [ ] Confirm mobile layout works from the deployed site.
-- [ ] Confirm a new push automatically triggers another deployment.
+- [x] The build job succeeds.
+- [x] The deploy job succeeds.
+- [x] Record the temporary GitHub Pages URL.
+- [x] Open the temporary URL without GitHub authentication.
+- [x] Confirm the home page, image, fonts, CV, and Job Market Paper load.
+- [x] Confirm papers two and three remain non-clickable and their future PDF paths return `404`.
+- [x] Confirm mobile layout works from the deployed site.
+- [x] Confirm a new push automatically triggers another deployment.
 
 Do not change Namecheap DNS until this checkpoint passes.
 
 Completion gate:
 
-- [ ] The site works at the temporary GitHub Pages URL.
+- [x] The site works at the temporary GitHub Pages URL.
 
 ## Checkpoint 5 - Verify Domain Ownership in GitHub
 
-Status: Not started
+Status: Ready to begin
 
 This protects the domain from being claimed by another GitHub Pages user.
 
@@ -475,7 +475,7 @@ Fill this in as we proceed. None of these values should be secret.
 | DNS backup date | Pending |
 | HTTPS enabled date | Pending |
 | Launch date | Pending |
-| Deployed commit | Pending |
+| Deployed commit | `dc6806c` verified at the temporary Pages URL |
 | Initial local commit | `233a0cf` |
 
 ## Official References
@@ -504,6 +504,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Created and connected the GitHub repository. | Public empty repository verified at `soyoungtot/soyoungtot.github.io`; reviewed files staged locally. |
 | 2026-09-28 | Created the initial local commit. | Commit `233a0cf` is ready; first push is waiting for secure GitHub authentication. |
 | 2026-09-28 | Completed deployment Checkpoint 3. | Source pushed to `main`; Pages source changed from branch deployment to GitHub Actions. |
+| 2026-09-28 | Completed deployment Checkpoint 4. | Astro workflow build and deploy succeeded; temporary URL and all intended routes verified. |
 
 ## Plan Maintenance Rules
 
