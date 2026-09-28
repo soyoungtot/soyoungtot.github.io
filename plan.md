@@ -15,8 +15,8 @@ This is the source of truth for moving the working local website to <https://soy
 
 ## Current Status
 
-- Current checkpoint: Checkpoint 5 - Verify domain ownership in GitHub
-- Overall status: Temporary GitHub Pages deployment verified
+- Current checkpoint: Checkpoint 7 - Inventory Namecheap DNS
+- Overall status: Domain verified; custom domain awaiting Namecheap web-record changes
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -223,7 +223,7 @@ Completion gate:
 
 ## Checkpoint 5 - Verify Domain Ownership in GitHub
 
-Status: Ready to begin
+Status: Complete
 
 This protects the domain from being claimed by another GitHub Pages user.
 
@@ -241,19 +241,19 @@ This protects the domain from being claimed by another GitHub Pages user.
 
 Technical verification:
 
-- [ ] Confirm the TXT record is visible in public DNS.
-- [ ] Return to GitHub profile **Settings** → **Pages** and select **Verify**.
-- [ ] GitHub shows `soyounghan.com` as verified.
+- [x] Confirm the TXT record is visible in public DNS.
+- [x] Return to GitHub profile **Settings** → **Pages** and select **Verify**.
+- [x] GitHub shows `soyounghan.com` as verified.
 
 DNS updates may be quick but can take up to 24 hours. Waiting does not indicate failure.
 
 Completion gate:
 
-- [ ] GitHub shows the domain as verified and the TXT record remains in Namecheap.
+- [x] GitHub shows the domain as verified and the TXT record remains in Namecheap.
 
 ## Checkpoint 6 - Add the Custom Domain to the Repository
 
-Status: Not started
+Status: Complete
 
 Complete this before changing Namecheap A or CNAME records.
 
@@ -265,22 +265,22 @@ Complete this before changing Namecheap A or CNAME records.
 
 Technical verification:
 
-- [ ] GitHub recognizes `soyounghan.com` as the requested custom domain.
-- [ ] The latest workflow still succeeds.
-- [ ] The built artifact contains the custom-domain configuration.
+- [x] GitHub recognizes `soyounghan.com` as the requested custom domain.
+- [x] The latest workflow succeeds.
+- [x] The built artifact contains the custom-domain configuration.
 
 Completion gate:
 
-- [ ] The GitHub Pages repository is waiting for `soyounghan.com` DNS.
+- [x] The GitHub Pages repository is waiting for `soyounghan.com` DNS.
 
 ## Checkpoint 7 - Inventory Namecheap DNS
 
-Status: Not started
+Status: In progress
 
 This checkpoint prevents accidental email or service disruption.
 
 1. In Namecheap, open **Domain List** → `soyounghan.com` → **Manage**.
-2. Record the **Nameservers** selection.
+2. Record the **Nameservers** selection. `[x]` Namecheap BasicDNS (`dns1` and `dns2.registrar-servers.com`)
 3. Open **Advanced DNS**.
 4. Capture the entire **Host Records** table before editing.
 5. Record all existing entries for hosts `@`, `www`, and `*`.
@@ -450,8 +450,8 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Temporary portrait may launch | Checkpoint 1 | Complete | Current image approved for initial launch |
 | Canonical URL embedded in first paper | Production acceptance | Complete | Confirmed present in the supplied PDF |
 | Canonical URLs inside CV | Production acceptance | Open | Current CV uses `http://www.soyounghan.com`; update to `https://soyounghan.com` before final export |
-| DNS provider/nameservers | Checkpoint 7 | Open | Must confirm DNS is editable in Namecheap |
-| Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Open | Must inventory before editing DNS |
+| DNS provider/nameservers | Checkpoint 7 | Complete | Namecheap BasicDNS confirmed publicly |
+| Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | In progress | Public DNS inventoried; confirm the full Namecheap Host Records table before editing |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
 | GitHub push authentication | Checkpoint 3 | Complete | Dedicated SSH key added to the `soyoungtot` account and verified |
@@ -469,9 +469,9 @@ Fill this in as we proceed. None of these values should be secret.
 | Temporary Pages URL | `https://soyoungtot.github.io` |
 | Custom domain | `soyounghan.com` |
 | Canonical URL | `https://soyounghan.com` |
-| GitHub domain-verification TXT host | Pending |
-| GitHub domain-verification TXT value | Pending |
-| Namecheap nameserver mode | Pending |
+| GitHub domain-verification TXT host | `_github-pages-challenge-soyoungtot` |
+| GitHub domain-verification TXT value | `0702e4cf65b44ecb34816d5fbfb424` |
+| Namecheap nameserver mode | BasicDNS: `dns1.registrar-servers.com`, `dns2.registrar-servers.com` |
 | DNS backup date | Pending |
 | HTTPS enabled date | Pending |
 | Launch date | Pending |
@@ -505,6 +505,8 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Created the initial local commit. | Commit `233a0cf` is ready; first push is waiting for secure GitHub authentication. |
 | 2026-09-28 | Completed deployment Checkpoint 3. | Source pushed to `main`; Pages source changed from branch deployment to GitHub Actions. |
 | 2026-09-28 | Completed deployment Checkpoint 4. | Astro workflow build and deploy succeeded; temporary URL and all intended routes verified. |
+| 2026-09-28 | Completed deployment Checkpoints 5 and 6. | Domain ownership verified; repository configured for `soyounghan.com` before web DNS changes. |
+| 2026-09-28 | Inventoried public DNS. | Existing root redirect, `www` parking, email-forwarding MX/SPF, and verification TXT records identified. |
 
 ## Plan Maintenance Rules
 
