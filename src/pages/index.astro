@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getPaperHref, getPaperStatus, siteData } from "../data/site";
+
+const { meta, profile, research } = siteData;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: "https://soyounghan.com",
+  email: `mailto:${profile.email}`,
+  jobTitle: profile.title,
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: profile.affiliation,
+  },
+  knowsAbout: [
+    "Labor economics",
+    "Family economics",
+    "Economic history",
+    "Health economics",
+    "Economics of education",
+  ],
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  structuredData={structuredData}
+>
+  <div class="site-shell">
+    <header class="introduction" aria-labelledby="page-title">
+      <img
+        class="portrait"
+        src={profile.portrait.src}
+        alt={profile.portrait.alt}
+        width={profile.portrait.width}
+        height={profile.portrait.height}
+      />
+
+      <div class="introduction__content">
+        <h1 id="page-title">{profile.name}</h1>
+
+        <div class="introduction__copy">
+          {profile.introduction.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <p class="profile-links">
+          <a href={profile.cvPath}>Curriculum Vitae</a>
+          <span class="profile-link-separator" aria-hidden="true">/</span>
+          <span class="email-link">
+            Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </span>
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="research" aria-labelledby="research-title">
+        <h2 id="research-title">Research</h2>
+
+        <div class="research-list">
+          {
+            research.map((paper) => (
+              <article class="paper">
+                <h3>{paper.title}</h3>
+                {paper.label && <p class="paper__label">{paper.label}</p>}
+                {paper.coauthors && (
+                  <p class="paper__coauthors">{paper.coauthors}</p>
+                )}
+                <p class="paper__abstract">{paper.abstract}</p>
+                {getPaperStatus(paper.paperId) === "ready" ? (
+                  <p class="paper__link">
+                    <a href={getPaperHref(paper.paperId)}>View draft</a>
+                  </p>
+                ) : (
+                  <p class="paper__coming-soon">
+                    <em>Draft coming soon!</em>
+                  </p>
+                )}
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; {new Date().getFullYear()} {profile.name}</p>
+    </footer>
+  </div>
+</BaseLayout>

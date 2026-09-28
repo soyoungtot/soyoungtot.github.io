@@ -1,0 +1,20 @@
+{
+  "health-insurance-fertility": {
+    "title": "Health Insurance and Fertility: Evidence from the Advent of Blue Cross",
+    "canonicalPath": "/papers/health-insurance-fertility.pdf",
+    "sourceFile": "public/papers/health-insurance-fertility.pdf",
+    "status": "ready"
+  },
+  "human-capital-varsity-sports": {
+    "title": "Human Capital Accumulation and Varsity Sports for College Athletes",
+    "canonicalPath": "/papers/human-capital-varsity-sports.pdf",
+    "sourceFile": "public/papers/human-capital-varsity-sports.pdf",
+    "status": "coming-soon"
+  },
+  "black-high-schools": {
+    "title": "Black High Schools in the Segregated U.S. South",
+    "canonicalPath": "/papers/black-high-schools.pdf",
+    "sourceFile": "public/papers/black-high-schools.pdf",
+    "status": "coming-soon"
+  }
+}

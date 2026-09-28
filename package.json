@@ -1,0 +1,25 @@
+{
+  "name": "soyoung-han-academic-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "start": "astro dev",
+    "build": "npm run validate:papers && astro check && astro build",
+    "build:release": "npm run validate:release && astro check && astro build",
+    "check": "astro check",
+    "preview": "astro preview --host 0.0.0.0",
+    "validate:papers": "node scripts/validate-paper-registry.mjs",
+    "validate:release": "node scripts/validate-paper-registry.mjs --release"
+  },
+  "dependencies": {
+    "@fontsource/libre-franklin": "^5.2.8",
+    "@fontsource/source-serif-4": "^5.2.8",
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}
