@@ -512,6 +512,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Restarted GitHub certificate provisioning. | Confirmed fallback `*.github.io` certificate, audited both authoritative nameservers, then removed and re-added the verified custom domain per GitHub guidance. |
 | 2026-09-28 | Enabled and verified production HTTPS. | Valid certificate covers apex and `www`; all HTTP and default Pages URLs redirect to `https://soyounghan.com`. |
 | 2026-09-28 | Revised the production research section. | Blue Cross draft link hidden; Varsity Sports moved last without an abstract; State Investments paper added with a future canonical URL. |
+| 2026-09-29 | Replaced the public CV. | New three-page CV installed at the existing stable URL; embedded legacy URLs continue to redirect securely. |
 
 ## Plan Maintenance Rules
 
