@@ -16,7 +16,7 @@ This is the source of truth for moving the working local website to <https://soy
 ## Current Status
 
 - Current checkpoint: Checkpoint 8 - DNS propagation and GitHub check
-- Overall status: Namecheap points to GitHub; HTTPS certificate pending
+- Overall status: Namecheap points to GitHub; certificate provisioning restarted after verified DNS audit
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -454,6 +454,7 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Complete | Web conflicts replaced; email, SPF, and verification TXT preserved; no wildcard found |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
+| GitHub HTTPS certificate | Checkpoint 9 | In progress | GitHub returned fallback `*.github.io` certificate; custom domain removed and re-added after authoritative DNS was verified clean |
 | GitHub push authentication | Checkpoint 3 | Complete | Dedicated SSH key added to the `soyoungtot` account and verified |
 
 ## Deployment Record
@@ -508,6 +509,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Completed deployment Checkpoints 5 and 6. | Domain ownership verified; repository configured for `soyounghan.com` before web DNS changes. |
 | 2026-09-28 | Inventoried public DNS. | Existing root redirect, `www` parking, email-forwarding MX/SPF, and verification TXT records identified. |
 | 2026-09-28 | Updated Namecheap web records. | Apex and `www` resolve correctly through public DNS; GitHub edge serves the site and redirects `www` to apex. |
+| 2026-09-28 | Restarted GitHub certificate provisioning. | Confirmed fallback `*.github.io` certificate, audited both authoritative nameservers, then removed and re-added the verified custom domain per GitHub guidance. |
 
 ## Plan Maintenance Rules
 
