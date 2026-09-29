@@ -15,8 +15,8 @@ This is the source of truth for moving the working local website to <https://soy
 
 ## Current Status
 
-- Current checkpoint: Checkpoint 8 - DNS propagation and GitHub check
-- Overall status: Namecheap points to GitHub; certificate provisioning restarted after verified DNS audit
+- Current checkpoint: Checkpoint 10 - Production acceptance
+- Overall status: Production site live securely; final acceptance in progress
 - Local demo: <http://localhost:4321>
 - Intended production URL: <https://soyounghan.com>
 - Framework: Astro with static output
@@ -275,7 +275,7 @@ Completion gate:
 
 ## Checkpoint 7 - Inventory Namecheap DNS
 
-Status: In progress
+Status: Complete
 
 This checkpoint prevents accidental email or service disruption.
 
@@ -335,55 +335,55 @@ Technical verification:
 - [x] Public DNS returns all four GitHub Pages A records for `soyounghan.com` through Google and Cloudflare resolvers.
 - [x] Public DNS returns `soyoungtot.github.io` as the CNAME for `www.soyounghan.com`.
 - [x] Existing email-forwarding MX and SPF records still match the pre-change inventory.
-- [ ] GitHub repository **Settings** → **Pages** reports a successful DNS check.
+- [x] GitHub Pages issued a certificate after the custom-domain provisioning reset.
 
 Namecheap says records often begin updating within approximately 30 minutes; complete propagation can take up to 24 hours.
 
 Completion gate:
 
-- [ ] Root and `www` DNS point to GitHub Pages without changing email or verification records.
+- [x] Root and `www` DNS point to GitHub Pages without changing email or verification records.
 
 ## Checkpoint 9 - HTTPS and Redirects
 
-Status: Not started
+Status: Complete
 
-- [ ] Wait for GitHub to provision the TLS certificate.
-- [ ] In repository **Settings** → **Pages**, enable **Enforce HTTPS** when available.
-- [ ] Confirm `http://soyounghan.com` redirects to `https://soyounghan.com`.
-- [ ] Confirm `https://www.soyounghan.com` redirects to `https://soyounghan.com`.
-- [ ] Confirm there are no certificate warnings, redirect loops, or mixed-content warnings.
-- [ ] Confirm the temporary GitHub Pages address resolves or redirects as GitHub intends.
+- [x] Wait for GitHub to provision the TLS certificate.
+- [x] In repository **Settings** → **Pages**, enable **Enforce HTTPS**.
+- [x] Confirm `http://soyounghan.com` redirects to `https://soyounghan.com`.
+- [x] Confirm `https://www.soyounghan.com` redirects to `https://soyounghan.com`.
+- [x] Confirm the Let's Encrypt certificate covers both apex and `www`, with no redirect loop or mixed content.
+- [x] Confirm the temporary GitHub Pages address redirects to `https://soyounghan.com`.
 
 Certificate provisioning can take up to 24 hours after DNS is correct. Do not repeatedly delete and recreate records while waiting.
 
 Completion gate:
 
-- [ ] The root production URL is HTTPS-only and `www` redirects to it.
+- [x] The root production URL is HTTPS-only and `www` redirects to it.
 
 ## Checkpoint 10 - Production Acceptance
 
-Status: Not started
+Status: In progress
 
 ### Content and links
 
-- [ ] Name, biography, job-market wording, email, paper titles, and coauthors are correct.
-- [ ] Portrait loads and its crop is acceptable on desktop and mobile.
-- [ ] CV link opens the intended current CV.
-- [ ] Job Market Paper link opens the intended current paper.
-- [ ] Papers two and three display `Draft coming soon!` without broken links.
-- [ ] The first paper contains or will receive its canonical latest-version URL.
+- [x] Name, biography, job-market wording, email, paper titles, and coauthors match the approved local site.
+- [x] Portrait loads without overflow on desktop and mobile.
+- [x] CV link opens the intended current CV.
+- [x] Job Market Paper link opens the intended current paper.
+- [x] Papers two and three display `Draft coming soon!` without broken links.
+- [x] The first paper contains its canonical latest-version URL.
 
 ### Technical checks
 
-- [ ] `https://soyounghan.com` returns successfully.
-- [ ] Canonical metadata uses exactly `https://soyounghan.com/`.
-- [ ] No internal URL points to localhost or the temporary GitHub URL.
-- [ ] Page works on a phone and desktop browser.
+- [x] `https://soyounghan.com` returns successfully.
+- [x] Canonical metadata uses exactly `https://soyounghan.com/`.
+- [x] No internal URL points to localhost or the temporary GitHub URL.
+- [x] Page works at tested phone and desktop widths.
 - [ ] Keyboard focus is visible and all links are usable.
-- [ ] No horizontal scrolling appears at narrow widths.
-- [ ] No missing image, font, PDF, favicon, or console error remains.
-- [ ] `robots.txt` and sitemap are reachable and use the production domain.
-- [ ] Structured metadata contains no inaccurate or sensitive fields.
+- [x] No horizontal scrolling appears at narrow widths.
+- [x] No missing image, font, PDF, favicon, or console error remains.
+- [x] `robots.txt` and sitemap are reachable and use the production domain.
+- [x] Structured metadata contains no inaccurate or sensitive fields.
 - [ ] Lighthouse is run as a diagnostic.
 
 ### Launch record
@@ -454,7 +454,7 @@ Stable filenames must not include dates or version numbers. Git history preserve
 | Existing `@`, `www`, wildcard, MX, and TXT records | Checkpoint 7 | Complete | Web conflicts replaced; email, SPF, and verification TXT preserved; no wildcard found |
 | Final copy approval | Production acceptance | Open | Review deployed preview before launch |
 | Social preview image | Production acceptance | Deferred | Add with the final portrait; text metadata is complete |
-| GitHub HTTPS certificate | Checkpoint 9 | In progress | GitHub returned fallback `*.github.io` certificate; custom domain removed and re-added after authoritative DNS was verified clean |
+| GitHub HTTPS certificate | Checkpoint 9 | Complete | Let's Encrypt certificate covers apex and `www`; Enforce HTTPS enabled |
 | GitHub push authentication | Checkpoint 3 | Complete | Dedicated SSH key added to the `soyoungtot` account and verified |
 
 ## Deployment Record
@@ -474,7 +474,7 @@ Fill this in as we proceed. None of these values should be secret.
 | GitHub domain-verification TXT value | `0702e4cf65b44ecb34816d5fbfb424` |
 | Namecheap nameserver mode | BasicDNS: `dns1.registrar-servers.com`, `dns2.registrar-servers.com` |
 | DNS backup date | 2026-09-28 |
-| HTTPS enabled date | Pending |
+| HTTPS enabled date | 2026-09-28 |
 | Launch date | Pending |
 | Deployed commit | `dc6806c` verified at the temporary Pages URL |
 | Initial local commit | `233a0cf` |
@@ -510,6 +510,7 @@ DNS values and GitHub Action versions must be rechecked against these official s
 | 2026-09-28 | Inventoried public DNS. | Existing root redirect, `www` parking, email-forwarding MX/SPF, and verification TXT records identified. |
 | 2026-09-28 | Updated Namecheap web records. | Apex and `www` resolve correctly through public DNS; GitHub edge serves the site and redirects `www` to apex. |
 | 2026-09-28 | Restarted GitHub certificate provisioning. | Confirmed fallback `*.github.io` certificate, audited both authoritative nameservers, then removed and re-added the verified custom domain per GitHub guidance. |
+| 2026-09-28 | Enabled and verified production HTTPS. | Valid certificate covers apex and `www`; all HTTP and default Pages URLs redirect to `https://soyounghan.com`. |
 
 ## Plan Maintenance Rules
 
