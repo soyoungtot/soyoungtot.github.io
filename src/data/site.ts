@@ -5,6 +5,7 @@ export interface PaperRegistryEntry {
   canonicalPath: string;
   sourceFile: string;
   status: "coming-soon" | "ready";
+  displayDraft?: boolean;
 }
 
 export const paperRegistry = paperRegistryData as Record<
@@ -22,13 +23,19 @@ export function getPaperStatus(paperId: PaperId): PaperRegistryEntry["status"] {
   return paperRegistry[paperId].status;
 }
 
+export function isPaperDraftVisible(paperId: PaperId): boolean {
+  const paper = paperRegistry[paperId];
+
+  return paper.status === "ready" && paper.displayDraft !== false;
+}
+
 export function getPaperCanonicalUrl(paperId: PaperId): URL {
   return new URL(paperRegistry[paperId].canonicalPath, "https://soyounghan.com");
 }
 
 export interface ResearchPaper {
   title: string;
-  abstract: string;
+  abstract?: string;
   paperId: PaperId;
   coauthors?: string;
   label?: string;
@@ -89,18 +96,24 @@ export const siteData = {
       paperId: "health-insurance-fertility",
     },
     {
-      title: "Human Capital Accumulation and Varsity Sports for College Athletes",
-      coauthors: "with Xiaomeng Li and Georgy Shukaylo",
-      abstract:
-        "This study examines the academic and labor market outcomes of NCAA Division I student-athletes using a dataset spanning 2000-2024 from a large public university. We leverage quasi-random variation in postseason performance to analyze the effects of unexpected season extensions and early tournament exits on term GPA. Results indicate that exceeding postseason expectations significantly reduces GPA, while underperforming also leads to academic declines, suggesting psychological and motivational mechanisms. In terms of labor market outcomes, student-athletes are almost seven times more likely to take on jobs in sports-related industries and more than five times more likely to have their first job in sports following graduation. In terms of positional level, no significant advantage is observed in managerial and mid-level managerial roles. However, student-athletes are much more likely to take on executive positions, accounting for cumulative GPA. Our findings contribute to the understanding of how dual careers in athletics and academics shape both short- and long-term educational and career outcomes. We conclude that student-athletes' GPA, while negatively affected by unexpected extensions of postseason play, does not restrict their ability to enter higher-paying jobs post-graduation. At the same time, the propensity to work in sports post-graduation is several times higher than for non-athlete students, suggesting a mechanism for compensating utility from working in sports.",
-      paperId: "human-capital-varsity-sports",
-    },
-    {
       title: "Black High Schools in the Segregated U.S. South",
       coauthors: "with Melvin Stephens, Jr.",
       abstract:
         "Educational access for Black Americans has historically lagged far behind that of Whites. In particular, only one in six counties in the segregated U.S. South had a Black high school in 1910. This paper examines the impact of the subsequent rapid spread of high schools over the next three decades on Black educational and economic outcomes using a newly compiled dataset of segregated Black high school openings. Leveraging variation in the timing and location of school openings, we find that high school exposure substantially increased the likelihood of attending high school and raised total years of schooling. We find that these increased educational levels significantly affected adult location and migration choices, occupational choices, and earnings.",
       paperId: "black-high-schools",
+    },
+    {
+      title:
+        "The Distributional Effects of State Investments in Less-Selective Public Colleges",
+      coauthors: "with John Bound, Shwetha Raghuraman, and Andrew Simon",
+      abstract:
+        "We study the effects of targeted state investments in less-selective public universities. We consider a performance-based funding reform in Michigan that steeply increased appropriations for non-research-intensive institutions compared to others, while limiting tuition growth. Using administrative data linking all Michigan public high-school graduates to their postsecondary outcomes, we implement a difference-in-differences design comparing enrollment and graduation across institution types before and after the reform. The policy raised the share of high school graduates who enroll in non-R1 universities by about 0.2 percentage points (approximately 2,300 students) per year and increased graduation by roughly half of this amount. We find that the effects are concentrated among higher-income and non-URM students. Finally, we use university-level data from IPEDS and student survey data from the NCES to consider how demand- and supply-side responses lead to these patterns across students.",
+      paperId: "distributional-effects-state-investments",
+    },
+    {
+      title: "Human Capital Accumulation and Varsity Sports for College Athletes",
+      coauthors: "with Xiaomeng Li and Georgy Shukaylo",
+      paperId: "human-capital-varsity-sports",
     },
   ],
 } satisfies SiteData;

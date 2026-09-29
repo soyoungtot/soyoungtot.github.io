@@ -20,6 +20,7 @@ The registry at `src/data/papers.json` is the source of truth for public paper U
 | `health-insurance-fertility` | <https://soyounghan.com/papers/health-insurance-fertility.pdf> |
 | `human-capital-varsity-sports` | <https://soyounghan.com/papers/human-capital-varsity-sports.pdf> |
 | `black-high-schools` | <https://soyounghan.com/papers/black-high-schools.pdf> |
+| `distributional-effects-state-investments` | <https://soyounghan.com/papers/distributional-effects-state-investments.pdf> |
 
 Use the canonical URL in the footer or title-page note inside each PDF:
 
@@ -30,8 +31,9 @@ To publish or update a paper:
 1. Export the PDF with its canonical URL embedded in the document.
 2. Save it to the registry's exact `sourceFile` path under `public/papers/`.
 3. Change that registry entry's `status` from `coming-soon` to `ready`.
-4. Run `npm run build` and open the canonical path locally.
-5. Commit the PDF and registry change together. Git history preserves older versions while the public URL remains stable.
+4. Ensure `displayDraft` is absent or set to `true` when the website should show the link.
+5. Run `npm run build` and open the canonical path locally.
+6. Commit the PDF and registry change together. Git history preserves older versions while the public URL remains stable.
 
 Do not put dates or version numbers in canonical filenames. Use Git tags or GitHub Releases if a separately downloadable historical archive is ever needed.
 

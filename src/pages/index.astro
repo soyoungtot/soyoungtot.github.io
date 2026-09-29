@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getPaperHref, getPaperStatus, siteData } from "../data/site";
+import { getPaperHref, isPaperDraftVisible, siteData } from "../data/site";
 
 const { meta, profile, research } = siteData;
 const structuredData = {
@@ -69,8 +69,10 @@ const structuredData = {
                 {paper.coauthors && (
                   <p class="paper__coauthors">{paper.coauthors}</p>
                 )}
-                <p class="paper__abstract">{paper.abstract}</p>
-                {getPaperStatus(paper.paperId) === "ready" ? (
+                {paper.abstract && (
+                  <p class="paper__abstract">{paper.abstract}</p>
+                )}
+                {isPaperDraftVisible(paper.paperId) ? (
                   <p class="paper__link">
                     <a href={getPaperHref(paper.paperId)}>View draft</a>
                   </p>

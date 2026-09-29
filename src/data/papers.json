@@ -3,7 +3,8 @@
     "title": "Health Insurance and Fertility: Evidence from the Advent of Blue Cross",
     "canonicalPath": "/papers/health-insurance-fertility.pdf",
     "sourceFile": "public/papers/health-insurance-fertility.pdf",
-    "status": "ready"
+    "status": "ready",
+    "displayDraft": false
   },
   "human-capital-varsity-sports": {
     "title": "Human Capital Accumulation and Varsity Sports for College Athletes",
@@ -15,6 +16,12 @@
     "title": "Black High Schools in the Segregated U.S. South",
     "canonicalPath": "/papers/black-high-schools.pdf",
     "sourceFile": "public/papers/black-high-schools.pdf",
+    "status": "coming-soon"
+  },
+  "distributional-effects-state-investments": {
+    "title": "The Distributional Effects of State Investments in Less-Selective Public Colleges",
+    "canonicalPath": "/papers/distributional-effects-state-investments.pdf",
+    "sourceFile": "public/papers/distributional-effects-state-investments.pdf",
     "status": "coming-soon"
   }
 }
