@@ -206,10 +206,18 @@ footer p {
   .portrait {
     width: 11.5rem;
     height: 14.375rem;
+    margin-inline: auto;
   }
 
   h1 {
     font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .introduction__copy p {
+    hyphens: auto;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   .research {
