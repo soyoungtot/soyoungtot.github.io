@@ -80,10 +80,10 @@ export const siteData = {
     email: "soyoungh@umich.edu",
     cvPath: "/files/soyoung-han-cv.pdf",
     portrait: {
-      src: "/images/soyoung-han.jpg",
+      src: "/images/soyoung-han-2026.jpg",
       alt: "Portrait of Soyoung Han",
-      width: 177,
-      height: 236,
+      width: 1000,
+      height: 1250,
     },
   },
   research: [
