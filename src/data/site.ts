@@ -83,7 +83,7 @@ export const siteData = {
       src: "/images/soyoung-han-2026.jpg",
       alt: "Portrait of Soyoung Han",
       width: 1000,
-      height: 1250,
+      height: 1500,
     },
   },
   research: [
